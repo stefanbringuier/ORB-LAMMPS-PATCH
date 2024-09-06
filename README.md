@@ -1,4 +1,5 @@
 # Orbital Materials Pretrained Model LAMMPS wrapper
+[![Build and Run LAMMPS with ML-ORB](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH/actions/workflows/build_and_run.yaml/badge.svg)](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH/actions/workflows/build_and_run.yaml)
 
 > ⚠️ This is an early implementation and hasn't been vetted, but does appear to match ASE MD runs.
 > 
