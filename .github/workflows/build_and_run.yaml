@@ -43,6 +43,6 @@ jobs:
         
     - name: Run a simple LAMMPS input script (for testing)
       run: |
-        cd examples 
+        cd example
         cp ../lammps/src/ML-ORB/orb_driver.py .
         ../lammps/build/lmp -in in.BaTiO3  
