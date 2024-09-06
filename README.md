@@ -13,7 +13,7 @@ There might not be too much upside in performance as this approach is just a wra
 4. Download [LAMMPS](https://lammps.org).
 5. Clone this repo.
 6. Run the `patch.sh` script and provide path to the cloned LAMMPS folder.
-7. Compile LAMMPS with at minimum (you can add more) the following: `cmake -D BUILD_OMP=ON -D PKG_OMP=ON -D PKG_Python=ON -D PKG_ML-ORB=ON ../cmake`
+7. Compile LAMMPS with at minimum (you can add more) the following: `cmake -D BUILD_MPI=OFf -D BUILD_OMP=ON -D PKG_OMP=ON -D PKG_PYTHON=ON -D PKG_ML-ORB=ON ../cmake`
    > NOTE: You can compile with MPI but it will not work for this `pair_style`, in other words you can only use a single MPI task.
 
 ## How to use
