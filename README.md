@@ -1,5 +1,7 @@
 # Orbital Materials Pretrained Model LAMMPS wrapper
 
+> ⚠️ This is an early implementation and hasn't been vetted, but does appear to match ASE MD runs.
+> 
 This is a patch that borrows from the approach taken by the [AdvancedSoftCorp](https://github.com/advancesoftcorp/lammps) [M3GNet](https://github.com/advancesoftcorp/lammps/tree/based-on-lammps_2Aug2023/src/ML-M3GNET) implementation but for the Orbital Materials pretrained models. Essentially this is just C++ wrapper code to call the python implementation of [Orbital Materials pretrained atomic potentials](https://github.com/orbital-materials/orb-models). This means we have to use a python driver script that gets invoked by LAMMPS which is compiled with python and that python has the Orbital Materials pretrained potential package installed.
 
 ## Why
