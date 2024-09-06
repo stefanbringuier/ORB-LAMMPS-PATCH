@@ -1,0 +1,23 @@
+# Test of ML-ORB potential for BaTiO3 system
+
+units		metal
+boundary	p p p
+
+atom_style	atomic
+
+read_data	data.BaTiO3
+
+
+pair_style  orb . gpu
+pair_coeff	* *  orb-d3-v1 Ti Ba O
+
+neighbor	    0.3 bin
+neigh_modify	delay 10
+
+velocity all create 300.0 4928459 rot yes dist gaussian
+fix		    1 all nve
+thermo		10
+timestep	0.001
+
+dump	1 all atom 10 dump.BaTiO3-ML-ORB
+run		1000
