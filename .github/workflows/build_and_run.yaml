@@ -31,7 +31,7 @@ jobs:
 
     - name: Apply ML-ORB patch
       run: |
-        bash patch.sh $(pwd)/lammps
+        bash patch/patch.sh $(pwd)/lammps
 
     - name: Build LAMMPS with ML-ORB
       run: |
