@@ -1,0 +1,47 @@
+name: Build and Run LAMMPS with ML-ORB
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-lammps:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ make python3-venv libjpeg-dev libomp-dev libomp5
+        
+    - name: Setup Python virtual environment
+      run: |
+        python3 -m venv orb-models
+        source orb-models/bin/activate
+        pip install --upgrade pip
+        pip install orb-models
+        pip install "pynanoflann@git+https://github.com/dwastberg/pynanoflann#egg=af434039ae14bedcbb838a7808924d6689274168",
+  
+    - name: Download LAMMPS source code
+      run: |
+        git clone https://github.com/lammps/lammps.git
+        cd lammps
+
+    - name: Apply ML-ORB patch
+      run: |
+        bash patch.sh $(pwd)/lammps
+
+    - name: Build LAMMPS with ML-ORB
+      run: |
+        cd lammps
+        mkdir build
+        cd build
+        cmake -C ../cmake/presets/all_off.cmake -D BUILD_MPI=OFF -D BUILD_OMP=ON -D PKG_OMP=ON -D PKG_PYTHON=ON -D PKG_ML-ORB=ON ../cmake
+        make -j$(nproc)
+        
+    - name: Run a simple LAMMPS input script (for testing)
+      run: |
+        cd lammps/build
+        ./lmp -in ../examples/in.BaTiO3  
