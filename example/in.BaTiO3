@@ -12,10 +12,10 @@ pair_coeff	* *  orb-v1 Ti Ba O
 neighbor	    0.3 bin
 neigh_modify	delay 10
 
-thermo		10
-timestep	0.001
+thermo    10
+timestep  0.001
 velocity  all create 300.0 4928459 rot yes dist gaussian
-fix		    1 all nvt temp 300.0 300.0 1.0
+fix       1 all nvt temp 300.0 300.0 1.0
 
-dump	    1 all atom 10 dump.BaTiO3-ML-ORB
-run		    500
+dump      1 all atom 10 dump.BaTiO3-ML-ORB
+run        500
