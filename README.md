@@ -11,13 +11,13 @@ There might not be too much upside in performance (i.e., runs as fast as ASE MD)
 
 ## How to install
 1. Setup a python virtual environment and activate:
-   - `python -venv orb-models`
+   - `python -m venv orb-models`
    - `source orb-models/bin/activate`
 2. Install the [Orbital Materials pretrained atomic potentials](https://github.com/orbital-materials/orb-models)
 3. Download [LAMMPS](https://lammps.org).
 4. Clone this repo.
 5. Run the `patch.sh` script and provide path to the cloned LAMMPS folder.
-6. Compile LAMMPS with at minimum (you can add more) the following: `cmake -D BUILD_MPI=OFf -D BUILD_OMP=ON -D PKG_OMP=ON -D PKG_PYTHON=ON -D PKG_ML-ORB=ON ../cmake`
+6. Compile LAMMPS with at minimum (you can add more) the following: `cmake -D BUILD_MPI=OFF -D BUILD_OMP=ON -D PKG_OMP=ON -D PKG_PYTHON=ON -D PKG_ML-ORB=ON ../cmake`
    > NOTE: You can compile with MPI but it will not work for this `pair_style`, in other words you can only use a single MPI task.
 7. Copy the [orb_driver.py](patch/orb_driver.py) script to the folder with your LAMMPS input script or provide the full path to it in your input script.
 
@@ -30,7 +30,8 @@ pair_style orb </path/to/orb_driver.py> <gpu>
 pair_coeff * * orb-v1 <species-symbol-1> <species-symbol-2> ...
 ```
 
-The species should be the atomic symbol and ordered such that they follow LAMMPS type id sequence. If you provide the keyword `gpu` it should try to run on the GPU if one is available, otherwise the inference will be done on the CPU. The path to the `orb_driver.py` file is needed. You can copy this from either the [patch](patch) or the [example](example) folders. You do not need to modify `orb_driver.py` unless you are need custimization of finding the GPU flag isn't being passed properly.
+The species should be the atomic symbol and ordered such that they follow LAMMPS type id sequence. If you provide the keyword `gpu` it should try to run on the GPU if one is available, otherwise the inference will be done on the CPU. The path to the `orb_driver.py` file is needed. You can copy this from either the [patch](patch) or the [example](example) folders. You do not need to modify `orb_driver.py` unless you are need custimization or finding the GPU flag isn't being passed properly.
+> I was seeing the GPU utilized when using the `gpu` flag, but then when I ran on another system I had to manually edit the `orb_driver.py` to just use the `gpu`.
 
 
 ### Model options
