@@ -7,7 +7,7 @@ atom_style	atomic
 read_data	data.BaTiO3
 
 pair_style  orb ./orb_driver.py 
-pair_coeff	* *  orb-v1 Ti Ba O
+pair_coeff	* *  orb-v2 Ti Ba O
 
 neighbor	    0.3 bin
 neigh_modify	delay 10
