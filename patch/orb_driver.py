@@ -30,7 +30,7 @@ def orb_initialize(model_name = None, gpu = False, cutoff=4.0):
     if model_name is not None:
         orbff = pretrained.ORB_PRETRAINED_MODELS[model_name]()
     else:
-        orbff = pretrained.orb_v1()
+        orbff = pretrained.orb_v2()
    
     #  Assign Calculator and Device Type
     global calculator
