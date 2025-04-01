@@ -1,7 +1,7 @@
 # Orbital Materials Pretrained Model LAMMPS Wrapper
 [![Build and Run LAMMPS with ML-ORB](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH/actions/workflows/build_and_run.yaml/badge.svg)](https://github.com/stefanbringuier/ORB-LAMMPS-PATCH/actions/workflows/build_and_run.yaml)
 
-> ⚠️ This is an early implementation and has not been fully vetted, but it does appear to match ASE MD runs.
+> 🚩 4 Apr. 2025: The [Orbital Materials models](https://github.com/orbital-materials/orb-models) along with other GNNs have been implmented in <https://github.com/advancesoftcorp/lammps>, therefore this repo is being archived. 🚩
 > 
 This patch is inspired by the approach used in the [AdvancedSoftCorp](https://github.com/advancesoftcorp/lammps) [M3GNet](https://github.com/advancesoftcorp/lammps/tree/based-on-lammps_2Aug2023/src/ML-M3GNET) implementation, but it applies to the [Orbital Materials pretrained models](https://github.com/orbital-materials/orb-models). Essentially, this is a C++ wrapper that calls the Python implementation for the [Orbital Materials pretrained atomic potentials](https://github.com/orbital-materials/orb-models). As a result, a Python driver script must be invoked by LAMMPS, which needs to be compiled with Python support, and the Orbital Materials pretrained potential package must be installed in the Python environment.
 
